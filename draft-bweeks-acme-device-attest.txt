@@ -220,8 +220,9 @@ Table of Contents
               (ACME)", RFC 8555, DOI 10.17487/RFC8555, March 2019,
               <https://www.rfc-editor.org/rfc/rfc8555>.
 
-   [WebAuthn] Lundberg, E., "Web Authentication: An API for accessing
-              Public Key Credentials Level 2", April 2021,
+   [WebAuthn] Hodges, J., Jones, J., Jones, M. B., Kumar, A., and E.
+              Lundberg, "Web Authentication: An API for accessing Public
+              Key Credentials Level 2", April 2021,
               <https://www.w3.org/TR/webauthn-2/>.
 
 Appendix A.  Enterprise PKI
