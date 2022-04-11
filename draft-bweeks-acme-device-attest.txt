@@ -54,21 +54,21 @@ Table of Contents
    1.  Introduction
    2.  Conventions and Definitions
    3.  Permanent Identifier
-   4.  Device Attestation Challenge
-   5.  Security Considerations
-   6.  IANA Considerations
-     6.1.  ACME Identifier Types
-     6.2.  ACME Validation Method
-   7.  Normative References
+   4.  Hardware Module
+   5.  Device Attestation Challenge
+   6.  Security Considerations
+   7.  IANA Considerations
+     7.1.  ACME Identifier Types
+     7.2.  ACME Validation Method
+   8.  Normative References
    Appendix A.  Enterprise PKI
      A.1.  External Account Binding
-   Appendix B.  Certificate Fields
    Acknowledgments
    Author's Address
 
 1.  Introduction
 
-   The Automatic Certificate Management Environment (ACME) [RFC8555]}
+   The Automatic Certificate Management Environment (ACME) [RFC8555]
    standard specifies methods for validating control over identifiers,
    such as domain names.  It is also useful to be able to validate
    properties of the device requesting the certificate, such as the
@@ -77,8 +77,17 @@ Table of Contents
 
    Many operating systems and device vendors offer functionality
    enabling a device to generate a cryptographic attestation of their
-   identity, such as: - Android Key Attestation - Chrome OS Verified
-   Access - Trusted Platform Module
+   identity, such as:
+
+   *  Android Key Attestation
+      (https://source.android.com/security/keystore/attestation)
+
+   *  Chrome OS Verified Access (https://developers.google.com/chrome/
+      verified-access/overview)
+
+   *  Trusted Platform Module
+      (https://trustedcomputinggroup.org/resource/trusted-platform-
+      module-tpm-summary/)
 
    This document specifies two new identifier types, permanent-
    identifier and hardware-module, along with a new challenge type,
@@ -98,16 +107,38 @@ Table of Contents
 
 3.  Permanent Identifier
 
-   [RFC4043] describes how an identity along with the organization that
-   assigned the identity can be included in an X.509 certificate.
+   A new identifer type, "permanent-identifier" in introduced to
+   represent the identify of a device assigned by the manufacturer,
+   typically a serial number.
+
+   The identity along with the assigning orangization can be included in
+   the Subject Alternate Name Extension using the PermanentIdentifier
+   form described in [RFC4043].
 
    If the server includes PermanentIdentifier or HardwareModule in the
    subjectAltName extension the device attestation MUST have been
-   cryptographically verified.  If the server wishes to issue privacy-
-   preserving certificates, it MAY omit PermanentIdentifier,
-   HardwareModule, or both from the subjectAltName extension.
+   cryptographically verified.
 
-4.  Device Attestation Challenge
+   If the server wishes to issue privacy-preserving certificates, it MAY
+   omit PermanentIdentifier from the subjectAltName extension.
+
+4.  Hardware Module
+
+   A new identifer type, "hardware-module" in introduced to represent
+   the identify of secure cryptoprocessor, if any, that generated the
+   certificate key.
+
+   (TODO describe the certificate representation)
+
+   If the server includes HardwareModule in the subjectAltName extension
+   the CA MUST verify that the certificate key was generated on the
+   secure cryptoprocessor with the asserted identity and type.  The key
+   MUST NOT be able to be exported from the cryptoprocessor.
+
+   If the server wishes to issue privacy-preserving certificates, it MAY
+   omit HardwareModule from the subjectAltName extension.
+
+5.  Device Attestation Challenge
 
    The client can prove control over a permanent identifier of a device
    by providing an attestation statement containing the identifier of
@@ -160,13 +191,13 @@ Table of Contents
      "signature": "Q1bURgJoEslbD1c5...3pYdSMLio57mQNN4"
    }
 
-5.  Security Considerations
+6.  Security Considerations
 
    TODO Security
 
-6.  IANA Considerations
+7.  IANA Considerations
 
-6.1.  ACME Identifier Types
+7.1.  ACME Identifier Types
 
    The "ACME Validation Methods" registry is to be updated to include
    the following entry:
@@ -181,7 +212,7 @@ Table of Contents
 
                                  Table 1
 
-6.2.  ACME Validation Method
+7.2.  ACME Validation Method
 
    The "ACME Validation Methods" registry is to be updated to include
    the following entry:
@@ -194,7 +225,7 @@ Table of Contents
 
                                   Table 2
 
-7.  Normative References
+8.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -238,10 +269,6 @@ A.1.  External Account Binding
    authorized devices.  It is RECOMMENDED that the server require a
    value for the "externalAccountBinding" field to be present in
    "newAccount" requests.
-
-Appendix B.  Certificate Fields
-
-   TODO
 
 Acknowledgments
 
