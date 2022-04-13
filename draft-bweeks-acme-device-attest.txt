@@ -4,8 +4,8 @@
 
 ACME Working Group                                              B. Weeks
 Internet-Draft                                                    Google
-Intended status: Standards Track                           11 April 2022
-Expires: 13 October 2022
+Intended status: Standards Track                           13 April 2022
+Expires: 15 October 2022
 
 
  Automated Certificate Management Environment (ACME) Device Attestation
@@ -33,7 +33,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 13 October 2022.
+   This Internet-Draft will expire on 15 October 2022.
 
 Copyright Notice
 
@@ -89,13 +89,22 @@ Table of Contents
       (https://trustedcomputinggroup.org/resource/trusted-platform-
       module-tpm-summary/)
 
-   This document specifies two new identifier types, permanent-
-   identifier and hardware-module, along with a new challenge type,
-   device-attest-01.  This challenge requires the client to generate an
-   attestation that proves the asserted identifers belong to the device
-   requesting the certificate.  Appendix A provide guidance on how these
-   identifers can be used for issuing client certificates to devices in
-   an enterprise PKI context.
+   Using ACME and device attestation to issue client certificate for
+   enterprise PKI is anticipated to be the most common use case.  The
+   following variances to the ACME specification are described in this
+   document:
+
+   *  Addition of permanent-identifier and hardware-module identifier
+      types.
+
+   *  Addition of the device-attest-01 challenge type to prove control
+      of the permanent-identifier and hardware-module identifier types.
+
+   *  The challenge response payload contains a serialized WebAuthn
+      attestation statement format instead of an empty JSON object ({}).
+
+   *  Accounts and external account binding being used as a mechanism to
+      pre-authenticate requests to an enterprise CA.
 
 2.  Conventions and Definitions
 
