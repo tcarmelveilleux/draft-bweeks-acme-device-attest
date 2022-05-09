@@ -4,8 +4,8 @@
 
 ACME Working Group                                              B. Weeks
 Internet-Draft                                                    Google
-Intended status: Standards Track                              7 May 2022
-Expires: 8 November 2022
+Intended status: Standards Track                              9 May 2022
+Expires: 10 November 2022
 
 
  Automated Certificate Management Environment (ACME) Device Attestation
@@ -33,7 +33,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 8 November 2022.
+   This Internet-Draft will expire on 10 November 2022.
 
 Copyright Notice
 
@@ -118,18 +118,19 @@ Table of Contents
 
    A new identifer type, "permanent-identifier" in introduced to
    represent the identify of a device assigned by the manufacturer,
-   typically a serial number.
+   typically a serial number.  The name of this identifier type was
+   chosen to align with [RFC4043], it does perscribe the lifetime of the
+   identifier, which is at the discretion of the Assigner Authority.
 
    The identity along with the assigning orangization can be included in
    the Subject Alternate Name Extension using the PermanentIdentifier
    form described in [RFC4043].
 
-   If the server includes PermanentIdentifier or HardwareModule in the
-   subjectAltName extension the device attestation MUST have been
-   cryptographically verified.
-
-   If the server wishes to issue privacy-preserving certificates, it MAY
-   omit PermanentIdentifier from the subjectAltName extension.
+   The server MAY allow the client to include this identifier in the
+   certificate signing request (CSR).  Alternatively if the server
+   wishes to only issue privacy-preserving certificates, it MAY reject
+   CSRs containing a PermanentIdentifier in the subjectAltName
+   extension.
 
 4.  Hardware Module
 
