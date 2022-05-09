@@ -1398,6 +1398,7 @@ Content-Type: application/jose+json
         </h3>
 <p id="appendix-A.1-1">An enterprise CA likely only wants to recieve requests from authorized devices. It is <span class="bcp14">RECOMMENDED</span> that the server require a value for the "externalAccountBinding" field to be
 present in "newAccount" requests.<a href="#appendix-A.1-1" class="pilcrow">¶</a></p>
+<p id="appendix-A.1-2">If an enterprise CA desires to limit the number of certificate that can be requested with a given account, including limiting an account to a single certificate. After the desired number of certificates have been issued to an account, the server <span class="bcp14">MAY</span> revoke the account as described in Section 7.1.2 of <span>[<a href="#RFC8555" class="xref">RFC8555</a>]</span>.<a href="#appendix-A.1-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
