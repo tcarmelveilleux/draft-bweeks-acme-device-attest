@@ -89,7 +89,7 @@ Table of Contents
       (https://trustedcomputinggroup.org/resource/trusted-platform-
       module-tpm-summary/)
 
-   Using ACME and device attestation to issue client certificate for
+   Using ACME and device attestation to issue client certificates for
    enterprise PKI is anticipated to be the most common use case.  The
    following variances to the ACME specification are described in this
    document:
