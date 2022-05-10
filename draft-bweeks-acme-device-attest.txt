@@ -4,8 +4,8 @@
 
 ACME Working Group                                              B. Weeks
 Internet-Draft                                                    Google
-Intended status: Standards Track                              9 May 2022
-Expires: 10 November 2022
+Intended status: Standards Track                             10 May 2022
+Expires: 11 November 2022
 
 
  Automated Certificate Management Environment (ACME) Device Attestation
@@ -33,7 +33,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 10 November 2022.
+   This Internet-Draft will expire on 11 November 2022.
 
 Copyright Notice
 
@@ -116,13 +116,13 @@ Table of Contents
 
 3.  Permanent Identifier
 
-   A new identifer type, "permanent-identifier" in introduced to
-   represent the identify of a device assigned by the manufacturer,
+   A new identifier type, "permanent-identifier" is introduced to
+   represent the identity of a device assigned by the manufacturer,
    typically a serial number.  The name of this identifier type was
-   chosen to align with [RFC4043], it does perscribe the lifetime of the
-   identifier, which is at the discretion of the Assigner Authority.
+   chosen to align with [RFC4043], it does not prescribe the lifetime of
+   the identifier, which is at the discretion of the Assigner Authority.
 
-   The identity along with the assigning orangization can be included in
+   The identity along with the assigning organization can be included in
    the Subject Alternate Name Extension using the PermanentIdentifier
    form described in [RFC4043].
 
@@ -134,9 +134,9 @@ Table of Contents
 
 4.  Hardware Module
 
-   A new identifer type, "hardware-module" in introduced to represent
-   the identify of secure cryptoprocessor, if any, that generated the
-   certificate key.
+   A new identifier type, "hardware-module" is introduced to represent
+   the identity of the secure cryptoprocessor, if any, that generated
+   the certificate key.
 
    (TODO describe the certificate representation)
 
@@ -180,7 +180,7 @@ Table of Contents
    representation as described in Section 6.5.4 of [WebAuthn] for
    encapsulating attestation formats with these modification:
 
-   *  The key authorization is used to to form _attToBeSigned_. This
+   *  The key authorization is used to form _attToBeSigned_. This
       replaces the concatenation of _authenticatorData_ and
       _clientDataHash_.
 
@@ -287,19 +287,19 @@ Table of Contents
 
 Appendix A.  Enterprise PKI
 
-   ACME was originally originally envisioned for issuing certificates in
-   the Web PKI, however this extention will primarily be usedful in
-   enterprise PKI.  The subsection below cover some operational
-   considerations for an ACME-based enterprise CA.
+   ACME was originally envisioned for issuing certificates in the Web
+   PKI, however this extension will primarily be useful in enterprise
+   PKI.  The subsection below covers some operational considerations for
+   an ACME-based enterprise CA.
 
 A.1.  External Account Binding
 
-   An enterprise CA likely only wants to recieve requests from
+   An enterprise CA likely only wants to receive requests from
    authorized devices.  It is RECOMMENDED that the server require a
    value for the "externalAccountBinding" field to be present in
    "newAccount" requests.
 
-   If an enterprise CA desires to limit the number of certificate that
+   If an enterprise CA desires to limit the number of certificates that
    can be requested with a given account, including limiting an account
    to a single certificate.  After the desired number of certificates
    have been issued to an account, the server MAY revoke the account as
