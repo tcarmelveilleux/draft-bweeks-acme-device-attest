@@ -4,8 +4,8 @@
 
 ACME Working Group                                              B. Weeks
 Internet-Draft                                                    Google
-Intended status: Standards Track                             10 May 2022
-Expires: 11 November 2022
+Intended status: Standards Track                             2 June 2022
+Expires: 4 December 2022
 
 
  Automated Certificate Management Environment (ACME) Device Attestation
@@ -33,7 +33,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 11 November 2022.
+   This Internet-Draft will expire on 4 December 2022.
 
 Copyright Notice
 
@@ -126,19 +126,16 @@ Table of Contents
    the Subject Alternate Name Extension using the PermanentIdentifier
    form described in [RFC4043].
 
-   The server MAY allow the client to include this identifier in the
-   certificate signing request (CSR).  Alternatively if the server
-   wishes to only issue privacy-preserving certificates, it MAY reject
-   CSRs containing a PermanentIdentifier in the subjectAltName
-   extension.
+   Clients MAY include this identifier in the certificate signing
+   request (CSR).  Alternatively if the server wishes to only issue
+   privacy-preserving certificates, it MAY reject CSRs containing a
+   PermanentIdentifier in the subjectAltName extension.
 
 4.  Hardware Module
 
    A new identifier type, "hardware-module" is introduced to represent
-   the identity of the secure cryptoprocessor, if any, that generated
-   the certificate key.
-
-   (TODO describe the certificate representation)
+   the identity of the secure cryptoprocessor, that generated the
+   certificate key.
 
    If the server includes HardwareModule in the subjectAltName extension
    the CA MUST verify that the certificate key was generated on the
@@ -172,9 +169,10 @@ Table of Contents
    }
 
    A client fulfills this challenge by constructing a key authorization
-   from the "token" value provided in the challenge and the client's
-   account key.  The client then generates an WebAuthn attestation
-   object using the key authorization as the challenge.
+   ([RFC4086] Section 8.1) from the "token" value provided in the
+   challenge and the client's account key.  The client then generates an
+   WebAuthn attestation object using the key authorization as the
+   challenge.
 
    This specification borrows the WebAuthn _attestation object_
    representation as described in Section 6.5.4 of [WebAuthn] for
@@ -182,7 +180,8 @@ Table of Contents
 
    *  The key authorization is used to form _attToBeSigned_. This
       replaces the concatenation of _authenticatorData_ and
-      _clientDataHash_.
+      _clientDataHash_. _attToBeSigned_ is hashed using an algorithm
+      specified by the attestation format.
 
    *  The _authData_ field is unused and should be omitted.
 
