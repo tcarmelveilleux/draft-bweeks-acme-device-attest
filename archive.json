@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-06-07T00:08:14.522634+00:00",
+  "timestamp": "2022-06-09T00:08:56.480176+00:00",
   "repo": "brandonweeks/draft-bweeks-acme-device-attest",
   "labels": [
     {
@@ -50,5 +50,32 @@
     }
   ],
   "issues": [],
-  "pulls": []
+  "pulls": [
+    {
+      "number": 1,
+      "id": "PR_kwDOHJ3oBc45S2dN",
+      "title": "Suggested wording edits",
+      "url": "https://github.com/brandonweeks/draft-bweeks-acme-device-attest/pull/1",
+      "state": "OPEN",
+      "author": "mayakacz",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Attempted to:\r\n* add more context\r\n* follow formatting in other ACME and ACME-IP specs\r\n* identify TODOs\r\n\r\nFeel free to patch directly to change/remove any edits.",
+      "createdAt": "2022-06-08T06:36:25Z",
+      "updatedAt": "2022-06-08T06:36:25Z",
+      "baseRepository": "brandonweeks/draft-bweeks-acme-device-attest",
+      "baseRefName": "main",
+      "baseRefOid": "1e5a1d6d35eb7cd767d71af7fe9ca9edb5fbe654",
+      "headRepository": "mayakacz/draft-bweeks-acme-device-attest",
+      "headRefName": "mayakacz/edits",
+      "headRefOid": "427c26159ba4eb5b33dea264c18e0024de761c09",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    }
+  ]
 }
